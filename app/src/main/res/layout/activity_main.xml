@@ -25,7 +25,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/preferenceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
@@ -39,7 +39,7 @@
         android:layout_width="217dp"
         android:layout_height="143dp"
         android:text="edit preferences"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/preferenceText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
