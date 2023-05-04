@@ -26,9 +26,11 @@
 
     <TextView
         android:id="@+id/preferenceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
+        android:layout_width="308dp"
+        android:layout_height="83dp"
+        android:text="sad"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +38,10 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="217dp"
-        android:layout_height="143dp"
+        android:layout_width="330dp"
+        android:layout_height="120dp"
         android:text="edit preferences"
+        android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/preferenceText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

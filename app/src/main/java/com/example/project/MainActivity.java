@@ -1,8 +1,12 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,14 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences myPreferenceRef;
     private SharedPreferences.Editor myPreferenceEditor;
 
-    // function to start second activity
-    public void startSecondActivity(android.view.View view) {
-        // create an intent to start second activity
-        android.content.Intent intent = new android.content.Intent(this, secondactivity.class);
 
-        // start second activity
-        startActivity(intent);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +27,25 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // In onCreate()
-        myPreferenceRef = getPreferences(MODE_PRIVATE);
+        myPreferenceRef = getSharedPreferences("preferences", MODE_PRIVATE);
         myPreferenceEditor = myPreferenceRef.edit();
 
         Button button = findViewById(R.id.button);
 
+        final TextView editText = findViewById(R.id.preferenceText);
+        editText.setText(myPreferenceRef.getString("MyPersistentData", "No data found."));
+
+
+
         // set onClickListener for button
-        button.setOnClickListener(new android.view.View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(android.view.View view) {
-                startSecondActivity(view);
+            public void onClick(View view) {
+                Log.d("iamlogginglikehell", "iamlogginglikehell");
+                Intent intent = new Intent(MainActivity.this, secondactivity.class);
+                // start second activity
+                startActivity(intent);
             }
         });
     }
@@ -47,10 +53,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        TextView prefTextRef=new TextView(this);
-        prefTextRef=(TextView)findViewById(R.id.preferenceText);
-        // write preference to prefTextRef
-        prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference found."));
+        TextView preferenceView = findViewById(R.id.preferenceText);
+        preferenceView.setText(myPreferenceRef.getString("MyPersistentData", "No preference found."));
+        myPreferenceEditor.apply();
     }
 }
 
